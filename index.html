@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="MyApp">
+<head>
+	<title>THE MOVIE DB</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<script src="app/js/jquery.js"></script>
+	<script src="app/js/bootstrap.min.js"></script>
+	<script src="app/js/sweetalert2.min.js"></script>
+	<script src="app/js/angular.min.js"></script>
+	<script src="app/scripts/controllers/controller_index.js"></script>
+	<script src="app/scripts/script_index.js"></script>
+	<link rel="stylesheet" type="text/css" href="app/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="app/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="app/styles/index.css">
+    <script type="text/javascript">
+    	
+    </script>
+</head>
+<body>
+	<div style="border:11px solid black;"></div>
+	<div class="container-fluid contenedor_principal" ng-controller="indexCtrl">
+		<div class="row">
+			<br>
+			<!-- CONTENEDOR PRINCIPAL -->
+			<div class="col-xs-12 col-md-10">
+				<div class="row">
+					<!-- CONTENEDOR BARRA SUPERIOR BUSQUEDA -->
+					<div class="col-xs-12 col-md-12">
+						<div class="row">
+							<div class="col-xs-12 col-md-8">
+								<img src="app/images/texto.png">
+							</div>
+							<div class="col-xs-12 col-md-4">
+								<div class="row">
+									<div class="col-xs-12 col-md-2 container-right">
+										<img src="app/images/setup.png" id="img_setup" style="cursor: pointer;">
+									</div>
+									<div class="col-xs-12 col-md-10 container-right">
+										<div class="row">
+											<div class="col-xs-12 col-md-7 container-input-search">
+												<input type="search" id="busqueda" class="form-control" name="busqueda" placeholder="Ingrese su búsqueda">
+											</div>
+											<div class="col-xs-12 col-md-5 container-img-search">
+												<img src="app/images/search.png" id="img_search" style="cursor: pointer;">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- CONTENEDOR TARJETAS PELICULA -->
+					<div class="col-xs-12 col-md-12" style="border:0px solid red;">
+						<br><br><br>
+						<div class="row">
+							<div class="col-xs-12 col-md-4 container-datos-pelicula" style="border:0px solid;">
+								<div class="row sombra container-pelicula" style="border:0px solid green;">
+									<div class="col-xs-12 col-md-12 container-foto sombra_por_dentro">
+										<!-- <img src="app/images/foto.png"> -->
+									</div>
+									<div class="col-xs-12 col-md-12 container-titulo" style="border:0px solid purple;">
+										<span class="stroke">THE BIG BANG THEORY</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-md-12">
+										<br><br>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-4 container-datos-pelicula" style="border:0px solid;">
+								<div class="row sombra container-pelicula" style="border:0px solid green;">
+									<div class="col-xs-12 col-md-12 container-foto sombra_por_dentro">
+										<!-- <img src="app/images/foto.png"> -->
+									</div>
+									<div class="col-xs-12 col-md-12 container-titulo" style="border:0px solid purple;">
+										<span class="stroke">THE BIG BANG THEORY</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-md-12">
+										<br><br>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-4 container-datos-pelicula" style="border:0px solid;">
+								<div class="row sombra container-pelicula" style="border:0px solid green;">
+									<div class="col-xs-12 col-md-12 container-foto sombra_por_dentro">
+										<!-- <img src="app/images/foto.png"> -->
+									</div>
+									<div class="col-xs-12 col-md-12 container-titulo" style="border:0px solid purple;">
+										<span class="stroke">THE BIG BANG THEORY</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-md-12">
+										<br><br>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-4 container-datos-pelicula" style="border:0px solid;">
+								<div class="row sombra container-pelicula" style="border:0px solid green;">
+									<div class="col-xs-12 col-md-12 container-foto sombra_por_dentro">
+										<!-- <img src="app/images/foto.png"> -->
+									</div>
+									<div class="col-xs-12 col-md-12 container-titulo" style="border:0px solid purple;">
+										<span class="stroke">THE BIG BANG THEORY</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-md-12">
+										<br><br>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-4 container-datos-pelicula" style="border:0px solid;">
+								<div class="row sombra container-pelicula" style="border:0px solid green;">
+									<div class="col-xs-12 col-md-12 container-foto sombra_por_dentro">
+										<!-- <img src="app/images/foto.png"> -->
+									</div>
+									<div class="col-xs-12 col-md-12 container-titulo" style="border:0px solid purple;">
+										<span class="stroke">THE BIG BANG THEORY</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-md-12">
+										<br><br>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-4 container-datos-pelicula" style="border:0px solid;">
+								<div class="row sombra container-pelicula" style="border:0px solid green;">
+									<div class="col-xs-12 col-md-12 container-foto sombra_por_dentro">
+										<!-- <img src="app/images/foto.png"> -->
+									</div>
+									<div class="col-xs-12 col-md-12 container-titulo" style="border:0px solid purple;">
+										<span class="stroke">THE BIG BANG THEORY</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-md-12">
+										<br><br>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-4 container-datos-pelicula" style="border:0px solid;">
+								<div class="row sombra container-pelicula" style="border:0px solid green;">
+									<div class="col-xs-12 col-md-12 container-foto sombra_por_dentro">
+										<!-- <img src="app/images/foto.png"> -->
+									</div>
+									<div class="col-xs-12 col-md-12 container-titulo" style="border:0px solid purple;">
+										<span class="stroke">THE BIG BANG THEORY</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-md-12">
+										<br><br>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+					</div>
+				</div>
+			</div>
+			<!-- CONTENEDOR BARRA FIJA DE VIDEOS -->
+			<div class="col-xs-12 col-md-2 container-videos" style="border:0px solid red;">
+				<img src="app/images/video_fixed.png">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
