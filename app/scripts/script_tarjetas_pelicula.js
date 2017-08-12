@@ -2,9 +2,9 @@ $(document).ready(function(){
 	click_img_search();
 	click_img_setup();
 	click_img_videos();
-	// mouse_hover_div_pelicula();
 });
 
+// FUNCION QUE SE EJECUTA CUANDO SE HACE CLICK EN LA IMAGEN DE BUSCAR
 function click_img_search() {
 	$("#img_search").click(function(){
 		if( $('.container-input-search').is(":visible") ){ //esta visible
@@ -14,10 +14,12 @@ function click_img_search() {
 			//si no esta visible
 			$('.container-input-search').show("slow"); //mostrar
 			$('#busqueda').focus();
+			$('#busqueda').val("");
 		}
   	});
 }
 
+// FUNCION QUE SE EJECUTA CUANDO SE HACE CLICK EN LA IMAGEN DE CONFIGURACION
 function click_img_setup() {
 	$("#img_setup").click(function(){
   		swal(
@@ -28,6 +30,7 @@ function click_img_setup() {
   	});
 }
 
+// FUNCION QUE SE EJECUTA CUANDO SE HACE CLICK EN LA IMAGEN DE VIDEOS QUE ESTA FIJA AL BORDE LATERAL
 function click_img_videos() {
 	$("#img_videos").click(function(){
 		swal(
@@ -38,18 +41,7 @@ function click_img_videos() {
   	});
 }
 
-function mouse_hover_div_pelicula() {
-	$(".prueba").hover(function() { //entra el mouse 
-		// alert("entra");
-	    $(".container-titulo").addClass("container-titulo-hover");
-	    $(".texto-titulo").addClass("texto-titulo-hover");
-	    $(".container-titulo").removeClass("container-titulo");
-	    $(".texto-titulo").removeClass("texto-titulo");
-	  }, function() { //se quita el mouse
-	    $(".container-titulo").addClass("container-titulo");
-	    $(".texto-titulo").addClass("texto-titulo");
-	    $(".container-titulo").removeClass("container-titulo-hover");
-	    $(".texto-titulo").removeClass("texto-titulo-hover");
-	  }
-	);
+// FUNCION QUE SE EJECUTA CUANDO SE PIERDE EL FOCO DEL INPUT DE BUSQUEDA
+function perdio_foco() {
+	$('.container-input-search').hide("slow"); //esconder
 }

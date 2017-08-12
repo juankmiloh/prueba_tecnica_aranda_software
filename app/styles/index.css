@@ -7,11 +7,24 @@ html{
 body{
   background-color: #f2f3f5;
 }
+
+hr{
+  border: 1px solid #c1c2c4;
+}
+
 .barra_fija{
   border:11px solid black;
   position: fixed;
   z-index: 80;
   width: 100%;
+}
+
+.container-btn-back{
+  padding-left: 40px;
+}
+
+.container-texto-header{
+  padding-top: 10px;
 }
 
 .container-right{
@@ -53,6 +66,10 @@ body{
   box-shadow: inset 7px 9px 37px 2px rgba(0,0,0,0.51);
 }
 
+/*===========================================================
+* ESTILOS PARA EL CONTENEDOR DE LAS TARJETAS DE LAS PELICULAS
+*============================================================*/
+
 .container-datos-pelicula{
   padding-left: 70px;
   padding-right: 60px;
@@ -82,7 +99,7 @@ body{
 .container-titulo{
   text-align: left;
   padding-left: 10px;
-  padding-bottom: 8px;
+  height: 55px;
   background-color: #f2f3f5;
   padding-top: 9px;
 }
@@ -106,4 +123,48 @@ body{
   position: fixed;
   right: 0;
   top: 37%;
+}
+
+/*=============================================
+* ESTILOS PARA EL CONTENEDOR DEL DETALLE DE LA PELICULA
+*==============================================*/
+.container-btn-back{
+  display: none;
+}
+
+.container-tarjetas-pelicula{
+  display: block;
+}
+
+.container-detalle-pelicula{
+  display: none;
+}
+
+.container-img-detalle{
+  padding-left: 70px;
+  padding-right: 60px;
+}
+
+.container-foto-detalle{
+  /*background-image: url("../images/foto.png");*/
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 360px;
+  border: 10px solid #f2f3f5;
+  border-bottom: 0px;
+}
+
+.container-titulo-detalle{
+  text-align: left;
+  padding-left: 10px;
+  height: 55px;
+  background-color: #f2f3f5;
+  padding-top: 9px;
+}
+
+.texto-titulo-detalle{
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 23px;
+  color: #9fa2ab;
 }

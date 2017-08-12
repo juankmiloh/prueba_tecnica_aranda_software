@@ -7,21 +7,25 @@
 	<script src="app/js/jquery.js"></script>
 	<script src="app/js/bootstrap.min.js"></script>
 	<script src="app/js/sweetalert2.min.js"></script>
-	<script src="app/js/angular.min.js"></script>
+	<!-- <script src="app/js/angular.min.js"></script> -->
+	<script src="app/js/angular.js"></script>
+	<script src="app/js/angular-animate.js"></script>
+	<script src="app/js/angular-sanitize.js"></script>
+	<script src="app/js/angular-strap.min.js"></script>
+	<script src="app/js/angular-strap.tpl.min.js"></script>
 	<script src="app/js/ng-infinite-scroll.min.js"></script>
 	<script src="app/scripts/controllers/controller_index.js"></script>
-	<script src="app/scripts/script_index.js"></script>
+	<script src="app/scripts/script_tarjetas_pelicula.js"></script>
+	<script src="app/scripts/script_detalle_pelicula.js"></script>
 	<link rel="stylesheet" type="text/css" href="app/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="app/css/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css" href="app/styles/index.css">
-    <script type="text/javascript">
-    	
-    </script>
 </head>
 <body>
 	<div class="barra_fija"></div><br><br>
 	<div class="container-fluid contenedor_principal" ng-controller="indexCtrl">
-		<div class="row" ng-init="buscarPorNombre('a')">
+		<div class="row" ng-init="buscarPorNombre('a',1)">
+		<!-- <div class="row" ng-init="cargar_datos_detalle(2691)"> -->
 			<br>
 			<!-- CONTENEDOR PRINCIPAL -->
 			<div class="col-xs-12 col-md-10">
@@ -29,7 +33,10 @@
 					<!-- CONTENEDOR BARRA SUPERIOR BUSQUEDA -->
 					<div class="col-xs-12 col-md-12">
 						<div class="row">
-							<div class="col-xs-12 col-md-8">
+							<div class="col-xs-12 col-md-2 container-btn-back" style="border:0px solid red;">
+								<img src="app/images/img_btn_back.png" id="img_btn_back" class="aumentar_img" ng-click="click_img_back()">
+							</div>
+							<div class="col-xs-12 col-md-6 container-texto-header" style="border:0px solid green;">
 								<img src="app/images/texto.png">
 							</div>
 							<div class="col-xs-12 col-md-4">
@@ -40,7 +47,7 @@
 									<div class="col-xs-12 col-md-10 container-right">
 										<div class="row">
 											<div class="col-xs-12 col-md-7 container-input-search">
-												<input type="search" id="busqueda" class="form-control" name="busqueda" ng-model="busqueda" placeholder="Ingrese su búsqueda">
+												<input type="search" id="busqueda" class="form-control" name="busqueda" ng-model="busqueda" placeholder="Ingrese su búsqueda" onBlur="perdio_foco()">
 											</div>
 											<div class="col-xs-12 col-md-5 container-img-search">
 												<img src="app/images/search.png" id="img_search" class="aumentar_img" ng-click="buscarPelicula()">
@@ -50,26 +57,71 @@
 								</div>
 							</div>
 						</div>
+						<hr>
 					</div>
+
 					<!-- CONTENEDOR TARJETAS PELICULA -->
-					<div class="col-xs-12 col-md-12" infinite-scroll='cargarMasPeliculas()' infinite-scroll-distance='2'>
+					<div class="col-xs-12 col-md-12 container-tarjetas-pelicula" infinite-scroll='cargarMasPeliculas()' infinite-scroll-distance='2'>
 						<br><br><br>
 						<div class="row">
 							<div class="col-xs-12 col-md-4 container-datos-pelicula" ng-repeat="pelicula in peliculas">
-								<div class="row sombra container-pelicula">
+								<div class="row sombra container-pelicula" style="border:0px solid red;" data-trigger="hover" data-placement="top" data-html="true" data-title="<b><font color='yellow'>RATING</font></u></b> {{pelicula.popularity}}<br><b><font color='yellow'>ACTORES</font></u></b> {{actores}}<br>" bs-tooltip ng-mouseover="buscar_actores(pelicula.id)" ng-dblclick="ver_detalle(pelicula.id)">
 									<div ng-if="pelicula.poster_path != null" class="col-xs-12 col-md-12 container-foto sombra_por_dentro" style="background-image: url('https://image.tmdb.org/t/p/w500{{pelicula.poster_path}}');">
 										<!-- <img src="app/images/foto.png"> -->
 									</div>
 									<div ng-if="pelicula.poster_path == null" class="col-xs-12 col-md-12 container-foto sombra_por_dentro" style="background-image: url('app/images/no_img.jpg');">
 										<!-- <img src="app/images/foto.png"> -->
 									</div>
-									<div class="col-xs-12 col-md-12 container-titulo">
+									<div class="col-xs-12 col-md-12 container-titulo" style="border:0px solid blue;">
 										<span class="texto-titulo">{{pelicula.name}}</span>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-12 col-md-12">
-										<br><br>
+										<br><br><br>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+					</div>
+
+					<!-- CONTENEDOR DETALLE PELICULA -->
+					<div class="col-xs-12 col-md-12 container-detalle-pelicula">
+						<br>
+						<div class="row">
+							<div class="col-xs-12 col-md-7 container-img-detalle">
+								<div class="row sombra" style="border:0px solid red;">
+									<div ng-if="foto_detalle != null" class="col-xs-12 col-md-12 container-foto-detalle sombra_por_dentro" style="background-image: url('https://image.tmdb.org/t/p/w500{{foto_detalle}}');">
+										<!-- <img src="app/images/foto.png"> -->
+									</div>
+									<div ng-if="foto_detalle == null" class="col-xs-12 col-md-12 container-foto-detalle sombra_por_dentro" style="background-image: url('app/images/no_img.jpg');">
+										<!-- <img src="app/images/foto.png"> -->
+									</div>
+									<div class="col-xs-12 col-md-12 container-titulo" style="border:0px solid blue;">
+										<span class="texto-titulo-detalle">{{nombre_detalle}}</span>
+									</div>
+								</div>
+							</div>
+							<!-- CONTENEDOR TEMPORADAS -->
+							<div class="col-xs-12 col-md-5 container-temporada-detalle">
+								<div class="row">
+									<div class="col-xs-12 col-md-12">
+										<img src="app/images/texto_temporada.png">	
+									</div>
+									<div class="col-xs-12 col-md-12">
+										<div class="row">
+											<div class="col-xs-12 col-md-12">
+												<ul class="pagination" ng-repeat="temporada in temporadas">
+													<li id="temporada_{{temporada.season_number}}" style="cursor: pointer;"><a ng-click="cargar_temporada(temporada.season_number)">{{temporada.season_number}}</a></li>
+									            </ul>
+									            <hr>
+											</div>
+							            	<div class="col-xs-12 col-md-12" ng-repeat="episodio in episodios">
+							            		<span class="texto-titulo">{{episodio.episode_number}}&nbsp&nbsp&nbsp&nbsp&nbsp{{episodio.name}}</span>
+							            		<hr>
+							            	</div>
+							            </div>
 									</div>
 								</div>
 							</div>
