@@ -19,14 +19,14 @@ angular.module("MyApp",['ngAnimate','ngSanitize','mgcrea.ngStrap','infinite-scro
 		}else{
 			$scope.peliculas = [];
 			$scope.contador_paginas = 0;
-			$scope.buscarPorNombre(busqueda,1);
+			$scope.buscarPorNombre(busqueda,1,true);
 		}
 	}
 
 	$scope.peliculas = [];
 	$scope.contador_paginas = 0;
 	// FUNCION QUE PERMITE LISTAR LAS PRIMERAS (9) PELICULAS DE LA BUSQUEDA
-	$scope.buscarPorNombre = function(nombre_peli,pagina) {
+	$scope.buscarPorNombre = function(nombre_peli,pagina,scroll) {
 		if ($scope.busqueda != undefined || nombre_peli=="a") {
 			$scope.nombre_peli_busqueda = nombre_peli;
 			$scope.busqueda="";
@@ -37,7 +37,7 @@ angular.module("MyApp",['ngAnimate','ngSanitize','mgcrea.ngStrap','infinite-scro
 		        // console.log(result);
 		        $scope.total_paginas = result.data.total_pages;
 		        $scope.cantidad_pelis_pagina = result.data.results.length;
-		        if ($scope.cantidad_pelis_pagina != 0) {
+		        if ($scope.cantidad_pelis_pagina != 0 && scroll != false) {
 		        	$('.container-btn-back').hide("slow"); //esconder
 		        	$('.container-detalle-pelicula').hide("slow"); //esconder
 		        	$('.container-tarjetas-pelicula').show("slow"); //mostrar
@@ -52,12 +52,14 @@ angular.module("MyApp",['ngAnimate','ngSanitize','mgcrea.ngStrap','infinite-scro
 					}
 					// console.log($scope.peliculas);
 		        }else{
-		        	swal(
-						'Error.',
-						'No existe información para su búsqueda!',
-						'error'
-			        );
-			        $scope.busqueda="";
+		        	if (scroll != false) {
+		        		swal(
+							'Error.',
+							'No existe información para su búsqueda!',
+							'error'
+				        );
+				        $scope.busqueda="";
+		        	}		        	
 		        }
 		    }, function(result) {
 		        //some error
@@ -85,7 +87,7 @@ angular.module("MyApp",['ngAnimate','ngSanitize','mgcrea.ngStrap','infinite-scro
 		}else{
 			if ($scope.contador_paginas < $scope.total_paginas) {
 				$scope.contador_paginas += 1;
-				$scope.buscarPorNombre($scope.nombre_peli_busqueda,$scope.contador_paginas);
+				$scope.buscarPorNombre($scope.nombre_peli_busqueda,$scope.contador_paginas,true);
 			}
 		}
 	};
@@ -116,6 +118,7 @@ angular.module("MyApp",['ngAnimate','ngSanitize','mgcrea.ngStrap','infinite-scro
 	// FUNCION QUE SE EJECUTA CUANDO SE HACE DOBLE CLICK EN LA PELICULA PERMITIENDO CAPTURA EL ID DE LA PELICULA
 	$scope.ver_detalle = function(id_pelicula) {
 		// alert(id_pelicula);
+		$scope.buscarPorNombre(false,false,false); //SE LLAMA PARA CONTROLAR EL INFINITE SCROLL
 		$('.container-tarjetas-pelicula').hide("slow"); //esconder
 		$('.container-btn-back').show("slow"); //mostrar
 		$('.container-detalle-pelicula').show("slow"); //mostrar

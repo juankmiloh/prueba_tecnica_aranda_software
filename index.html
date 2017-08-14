@@ -14,7 +14,7 @@
 	<script src="app/js/angular-strap.min.js"></script>
 	<script src="app/js/angular-strap.tpl.min.js"></script>
 	<script src="app/js/ng-infinite-scroll.min.js"></script>
-	<script src="app/scripts/controllers/controller_index.js"></script>
+	<script src="app/scripts/controllers/controller_indexv1.js"></script>
 	<script src="app/scripts/script_tarjetas_pelicula.js"></script>
 	<script src="app/scripts/script_detalle_pelicula.js"></script>
 	<link rel="stylesheet" type="text/css" href="app/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
 <body>
 	<div class="barra_fija"></div><br><br>
 	<div class="container-fluid contenedor_principal" ng-controller="indexCtrl">
-		<div class="row" ng-init="buscarPorNombre('a',1)">
+		<div class="row" ng-init="buscarPorNombre('a',1,true)">
 		<!-- <div class="row" ng-init="cargar_datos_detalle(2691)"> -->
 			<br>
 			<!-- CONTENEDOR PRINCIPAL -->
