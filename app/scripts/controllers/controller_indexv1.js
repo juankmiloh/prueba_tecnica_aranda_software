@@ -59,7 +59,7 @@ angular.module("MyApp",['ngAnimate','ngSanitize','mgcrea.ngStrap','infinite-scro
 							'error'
 				        );
 				        $scope.busqueda="";
-		        	}		        	
+		        	}
 		        }
 		    }, function(result) {
 		        //some error
@@ -177,7 +177,7 @@ angular.module("MyApp",['ngAnimate','ngSanitize','mgcrea.ngStrap','infinite-scro
 	        		$("#temporada_"+i+"").addClass("active");
 	        	}else{
 	        		$("#temporada_"+i+"").removeClass("active");
-	        	}	        	
+	        	}
 	        }
 	    }, function(result) {
 	        //some error
